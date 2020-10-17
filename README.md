@@ -28,8 +28,13 @@ IaaS:
 
 #### Creating infrastructure as code
 
-1. Create Policy that ensures all indexed resources in your subscription have tags and deny deployment if they do not.
+1. Create Policy definition and assignment that ensures all indexed resources in your subscription have tags and deny deployment if they do not.
 
+```
+az policy definition create --name 'tagging-policy' --display-name 'Enforces a required tag and its value on resources' --description 'Ensures all indexed resources have tags and deny deployment if they do not' --mode Indexed --rules 'policy.json'
+
+az policy assignment create --policy 'tagging-policy' --name 'tagging-policy'
+```
 
 2. Creating a Packer template
 3. Creating a Terraform template
