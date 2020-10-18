@@ -13,6 +13,7 @@ IaaS:
 4. Load balancer
 5. Virtual Network
 6. Subnet with configurable count of virtual machines that will be build with Packer template
+7. Network security group
 
 ### Getting Started
 1. Clone this repository
