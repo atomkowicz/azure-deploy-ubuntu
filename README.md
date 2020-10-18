@@ -8,12 +8,13 @@ Repository consists of Packer template and a Terraform template to deploy a cust
 IaaS:
 
 1. Policy to require tags (deny policy type - if the conditions are not meet the resource will not be created)
-2. Templete for Ubuntu (Packer)
+2. Templete for Ubuntu VM (Packer)
 3. Resource group
 4. Load balancer
 5. Virtual Network
 6. Subnet with configurable count of virtual machines that will be build with Packer template
 7. Network security group
+8. Public IP address
 
 ### Getting Started
 1. Clone this repository
@@ -32,15 +33,36 @@ IaaS:
 1. Create Policy definition and assignment that ensures all indexed resources in your subscription have tags and deny deployment if they do not.
 
 ```
+az login
 az policy definition create --name 'tagging-policy' --display-name 'Enforces a required tag and its value on resources' --description 'Ensures all indexed resources have tags and deny deployment if they do not' --mode Indexed --rules 'policy.json'
 
 az policy assignment create --policy 'tagging-policy' --name 'tagging-policy'
 ```
 
-2. Creating a Packer template
-3. Creating a Terraform template
-4. Deploying the infrastructure
+2. create resource group
 
-### Output
-**Your words here**
+```
+az group create --name azure-deploy-ubuntu-resource-group --location northeurope
+```
+
+3. Creating a Packer template
+
+```
+packer build server.json
+az image list
+az image delete -g ddd-resource-group -n myIMage
+```
+
+4. Creating a Terraform template
+```
+terraform init
+terraform plan -out solution.plan
+```
+5. Deploying the infrastructure
+
+```
+terraform apply
+terraform show
+terraform destroy
+```
 

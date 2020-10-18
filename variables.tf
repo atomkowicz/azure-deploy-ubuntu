@@ -10,10 +10,12 @@ variable "location" {
 
 variable "username" {
   description = "Username configurable"
+  default     = "someuser"
 }
 
 variable "password" {
-  description = "Password configurable"
+  description = "Password configurable by the user"
+  default     = "somepass1234"
 }
 
 variable "environment" {
@@ -21,8 +23,8 @@ variable "environment" {
   default     = "dev"
 }
 
-variable "number_of_vms" {
+variable "vms_count" {
   description = "The number of virtual machines"
   type        = number
-  default     = 1
+  default     = 2
 }
