@@ -19,6 +19,13 @@ IaaS:
 ### Getting Started
 1. Clone this repository
 2. Create your infrastructure as code
+3. Set environmental variables: ARM_CLIENT_ID, ARM_CLIENT_SECRET, ARM_SUBSCRIPTION_ID
+
+```
+export ARM_CLIENT_ID=your_appId
+export ARM_CLIENT_SECRET=your_password
+export ARM_SUBSCRIPTION_ID=your_subscription_id
+```
 
 ### Dependencies
 1. Create an [Azure Account](https://portal.azure.com) 
